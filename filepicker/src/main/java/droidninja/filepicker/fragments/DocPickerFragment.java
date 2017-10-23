@@ -40,12 +40,9 @@ public class DocPickerFragment extends BaseFragment {
     private ProgressBar progressBar;
     private DocPickerFragmentListener mListener;
 
-    public DocPickerFragment() {
-        // Required empty public constructor
-    }
+    public DocPickerFragment() {}
 
-    public interface DocPickerFragmentListener{
-    }
+    public interface DocPickerFragmentListener{}
 
 
     @Override
@@ -67,8 +64,7 @@ public class DocPickerFragment extends BaseFragment {
         if (context instanceof DocPickerFragmentListener) {
             mListener = (DocPickerFragmentListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement DocPickerFragmentListener");
+            throw new RuntimeException(context.toString() + " must implement DocPickerFragmentListener");
         }
     }
 

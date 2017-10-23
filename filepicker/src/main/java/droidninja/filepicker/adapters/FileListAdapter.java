@@ -67,14 +67,14 @@ public class FileListAdapter extends SelectableAdapter<FileListAdapter.FileViewH
         //if true, your checkbox will be selected, else unselected
         holder.checkBox.setChecked(isSelected(document));
 
-        holder.itemView.setBackgroundResource(isSelected(document)?R.color.bg_gray:android.R.color.white);
+        holder.itemView.setBackgroundResource(isSelected(document)?R.color.divider:android.R.color.white);
         holder.checkBox.setVisibility(isSelected(document) ? View.VISIBLE : View.GONE);
 
         holder.checkBox.setOnCheckedChangeListener(new SmoothCheckBox.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
                 toggleSelection(document);
-                holder.itemView.setBackgroundResource(isChecked?R.color.bg_gray:android.R.color.white);
+                holder.itemView.setBackgroundResource(isChecked?R.color.divider:android.R.color.white);
 
                 if(mListener!=null)
                     mListener.onItemSelected();

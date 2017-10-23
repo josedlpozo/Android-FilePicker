@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import droidninja.filepicker.fragments.DocFragment;
@@ -30,8 +32,10 @@ public class FilePickerActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(PickerManager.getInstance().getTheme());
         setContentView(R.layout.activity_file_picker);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.accent));
         if(!PickerManager.getInstance().isEnableOrientation())
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initView();
@@ -96,23 +100,9 @@ public class FilePickerActivity extends AppCompatActivity implements
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.picker_menu, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int i = item.getItemId();
-        if (i == R.id.action_done) {
-            if (type == FilePickerConst.MEDIA_PICKER)
-                returnData(PickerManager.getInstance().getSelectedPhotos());
-            else
-                returnData(PickerManager.getInstance().getSelectedFiles());
-
-            return true;
-        } else if (i == android.R.id.home) {
+        if (i == android.R.id.home) {
             onBackPressed();
             return true;
         }
@@ -157,7 +147,11 @@ public class FilePickerActivity extends AppCompatActivity implements
     public void onItemSelected() {
         setToolbarTitle(PickerManager.getInstance().getCurrentCount());
 
-        if(PickerManager.getInstance().getMaxCount()==1)
-            returnData(type == FilePickerConst.FILE_TYPE_MEDIA ? PickerManager.getInstance().getSelectedPhotos() : PickerManager.getInstance().getSelectedFiles());
+        final ArrayList<String> selectedPhotos = PickerManager.getInstance().getSelectedPhotos();
+        final ArrayList<String> selectedFiles = PickerManager.getInstance().getSelectedFiles();
+        final int totalSelected = type == FilePickerConst.FILE_TYPE_MEDIA ? selectedPhotos.size() : selectedFiles.size();
+        if(PickerManager.getInstance().getMaxCount()==totalSelected) {
+            returnData(type == FilePickerConst.FILE_TYPE_MEDIA ? selectedPhotos : selectedFiles);
+        }
     }
 }

@@ -9,9 +9,8 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabBackground="@android:color/white"
         app:tabTextColor="@android:color/darker_gray"
-        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabSelectedTextColor="@color/accent"
         app:tabMaxWidth="0dp"
         >
 

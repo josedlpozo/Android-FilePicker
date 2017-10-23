@@ -20,13 +20,13 @@ public class FileUtils {
         if(getFileType(path)== FilePickerConst.FILE_TYPE.WORD)
             return R.drawable.ic_word;
         if(getFileType(path)== FilePickerConst.FILE_TYPE.PPT)
-            return R.drawable.ic_ppt;
+            return R.drawable.ic_ppt_old;
         if(getFileType(path)== FilePickerConst.FILE_TYPE.PDF)
             return R.drawable.ic_pdf;
         if(getFileType(path)== FilePickerConst.FILE_TYPE.TXT)
-            return R.drawable.ic_txt;
+            return R.drawable.ic_txt_old;
         else
-            return R.drawable.ic_txt;
+            return R.drawable.ic_txt_old;
     }
 
     public static FilePickerConst.FILE_TYPE getFileType(String path)

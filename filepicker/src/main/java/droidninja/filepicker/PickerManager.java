@@ -1,11 +1,9 @@
 package droidninja.filepicker;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import droidninja.filepicker.models.BaseFile;
 import droidninja.filepicker.models.FileType;
-import droidninja.filepicker.utils.Utils;
 
 /**
  * Created by droidNinja on 29/07/16.
@@ -24,7 +22,7 @@ public class PickerManager {
 
     private ArrayList<FileType> fileTypes;
 
-    private int theme = R.style.LibAppTheme;
+    private int theme = R.style.ActionBarTheme;
 
     private boolean showVideos;
 
@@ -158,19 +156,19 @@ public class PickerManager {
     public void addDocTypes()
     {
         String[] pdfs = {"pdf"};
-        fileTypes.add(new FileType(FilePickerConst.PDF,pdfs,R.drawable.ic_pdf));
+        fileTypes.add(new FileType(FilePickerConst.PDF,pdfs,R.drawable.ic_pdf_new_file));
 
         String[] docs = {"doc","docx", "dot","dotx"};
-        fileTypes.add(new FileType(FilePickerConst.DOC,docs,R.drawable.ic_word));
+        fileTypes.add(new FileType(FilePickerConst.DOC,docs,R.drawable.ic_doc_file));
 
         String[] ppts = {"ppt","pptx"};
-        fileTypes.add(new FileType(FilePickerConst.PPT,ppts,R.drawable.ic_ppt));
+        fileTypes.add(new FileType(FilePickerConst.PPT,ppts,R.drawable.ic_ppt_file));
 
         String[] xlss = {"xls","xlsx"};
-        fileTypes.add(new FileType(FilePickerConst.XLS,xlss,R.drawable.ic_excel));
+        fileTypes.add(new FileType(FilePickerConst.XLS,xlss,R.drawable.ic_xls_file));
 
         String[] txts = {"txt"};
-        fileTypes.add(new FileType(FilePickerConst.TXT,txts,R.drawable.ic_txt));
+        fileTypes.add(new FileType(FilePickerConst.TXT,txts,R.drawable.ic_txt_file));
     }
 
     public ArrayList<FileType> getFileTypes()
